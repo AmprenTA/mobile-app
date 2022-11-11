@@ -1,12 +1,38 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-
+import Navigation from "./navigation/Navigation";
+import { useFonts } from "expo-font";
+import {
+  IBMPlexSans_400Regular,
+  IBMPlexSans_500Medium,
+} from "@expo-google-fonts/ibm-plex-sans";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    IBMPlexSans_400Regular,
+    IBMPlexSans_500Medium,
+  });
+
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+
+    prepare();
+  }, []);
+
+  if (!fontsLoaded) {
+    return undefined;
+  } else {
+    SplashScreen.hideAsync();
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Salut Sergiu</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <Navigation />
+    </>
   );
 }
 
