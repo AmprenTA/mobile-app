@@ -2,7 +2,6 @@ import { View, StyleSheet, Text } from "react-native";
 import { useLayoutEffect } from "react";
 import { TextData } from "../constants/text";
 import { Colors } from "../constants/styles";
-import IconButton from "../components/ui/buttons/IconButton";
 import SvgCarbonFoot from "../components/ui/svg/SvgCarbonFoot";
 import SvgCarbonCloud from "../components/ui/svg/SvgCarbonCloud";
 import SvgPlanet from "../components/ui/svg/SvgPlanet";
@@ -15,7 +14,7 @@ function InfoScreen({ route, navigation }) {
   const data = TextData[pageInfoId];
 
   function goToCalculatorHandler() {
-    navigation.replace("CalculatorScreen");
+    navigation.replace("CalculatorNavigation");
   }
 
   let svg =
@@ -42,17 +41,6 @@ function InfoScreen({ route, navigation }) {
           <Text style={styles.firstText}>{data.firstDescription}</Text>
         </View>
         <View style={{ alignSelf: "center", margin: 50 }}>{svg}</View>
-        {pageInfoId === 1 && (
-          <IconButton
-            color={Colors.textPrimary}
-            size={20}
-            style={{ backgroundColor: Colors.blue }}
-            icon="arrow-forward-outline"
-            onPress={goToCalculatorHandler}
-          >
-            Încearcă acum
-          </IconButton>
-        )}
         <View style={styles.secondTextContainer}>
           <Text style={styles.secondText}>{data.secondDescription}</Text>
         </View>

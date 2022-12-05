@@ -1,27 +1,14 @@
 import { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
-// import { Alert, Pressable } from "react-native";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import IconButton from "../ui/buttons/IconButton";
 import Button from "../ui/buttons/Button";
 import IconInput from "../ui/inputs/IconInput";
 import { Colors } from "../../constants/styles";
-import { SelectList } from "react-native-dropdown-select-list";
 import SvgIcon from "../ui/svg/SvgIcon";
 import Highlight from "../ui/Highlight";
 import Separator from "../ui/Separator";
-
-const data = [
-  { key: "1", value: "Suceava" },
-  { key: "2", value: "Bucuresti" },
-  { key: "3", value: "Timisoara" },
-  { key: "4", value: "Cluj-Napoca" },
-  { key: "5", value: "Sibiu" },
-  { key: "6", value: "Deva" },
-  { key: "7", value: "Constanta" },
-];
 
 function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const navigation = useNavigation();
@@ -30,7 +17,6 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [selected, setSelected] = useState("");
 
   const ref_input2 = useRef();
   const ref_input4 = useRef();
@@ -38,6 +24,8 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const ref_input6 = useRef();
 
   const {
+    validFirstName: firstNameIsInvalid,
+    validLastName: lastNameIsInvalid,
     email: emailIsInvalid,
     password: passwordIsInvalid,
     confirmPassword: passwordsDontMatch,
@@ -64,11 +52,9 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   }
 
   function submitHandler() {
-    console.log(enteredEmail, enteredPassword, enteredConfirmPassword);
     onSubmit({
       firstName: firstName,
       lastName: lastName,
-      city: selected,
       email: enteredEmail,
       password: enteredPassword,
       confirmPassword: enteredConfirmPassword,
@@ -109,6 +95,8 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
               placeholder="Nume"
               afterSubmit={() => ref_input2.current.focus()}
               value={lastName}
+              isInvalid={lastNameIsInvalid}
+              invalidMessage="Numele nu este valid"
               onUpdateValue={updateInputValueHandler.bind(this, "lastName")}
             >
               Nume*
@@ -122,59 +110,25 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
               placeholder="Prenume"
               reference={ref_input2}
               afterSubmit={() => ref_input4.current.focus()}
+              isInvalid={firstNameIsInvalid}
               value={firstName}
+              invalidMessage="Prenumele nu este valid"
               onUpdateValue={updateInputValueHandler.bind(this, "firstName")}
             >
               Prenume*
             </IconInput>
           )}
-          {!isLogin && <Text style={styles.label}>Oraș*</Text>}
-          {!isLogin && (
-            <SelectList
-              setSelected={(val) => setSelected(val)}
-              data={data}
-              save="value"
-              searchPlaceholder="Caută"
-              placeholder="Ex: Suceava"
-              notFoundText="Nu am găsit"
-              boxStyles={styles.inputContainer}
-              fontFamily="IBMPlexSans_400Regular"
-              inputStyles={{ color: Colors.textSecondary, fontSize: 16 }}
-              dropdownStyles={styles.activeInput}
-              dropdownTextStyles={{ fontFamily: "IBMPlexSans_400Regular" }}
-              searchicon={
-                <Ionicons
-                  style={{ marginRight: 15 }}
-                  name="search-outline"
-                  size={18}
-                  colors={Colors.textPrimary}
-                />
-              }
-              closeicon={
-                <Ionicons
-                  name="close-outline"
-                  size={18}
-                  colors={Colors.textPrimary}
-                />
-              }
-              arrowicon={
-                <Ionicons
-                  name="arrow-down"
-                  size={18}
-                  colors={Colors.textPrimary}
-                />
-              }
-            />
-          )}
+
           <IconInput
             icon="mail-outline"
             inputType="email-address"
             placeholder="email@domain.com"
             reference={ref_input4}
-            afterSubmit={() => ref_input5.current.focus()}
+            afterSubmit={() => ref_input5?.current.focus()}
             value={enteredEmail}
             onUpdateValue={updateInputValueHandler.bind(this, "email")}
             isInvalid={emailIsInvalid}
+            invalidMessage="Email-ul nu este valid"
           >
             Adresa de e-mail*
           </IconInput>
@@ -185,10 +139,11 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
             secondIcon={true}
             secondIconName="eye-outline"
             reference={ref_input5}
-            afterSubmit={() => ref_input6.current.focus()}
+            // afterSubmit={() => ref_input6?.current.focus()}
             value={enteredPassword}
             onUpdateValue={updateInputValueHandler.bind(this, "password")}
             isInvalid={passwordIsInvalid}
+            invalidMessage="Parola trebuie să conțină cel puțin 6 caractere și un număr"
           >
             Parola*
           </IconInput>
@@ -206,6 +161,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
               )}
               value={enteredConfirmPassword}
               isInvalid={passwordsDontMatch}
+              invalidMessage="Ne pare rău, dar parolele nu coicid."
             >
               repetă Parola*
             </IconInput>
@@ -213,7 +169,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
           <IconButton
             color={Colors.textPrimary}
             size={20}
-            style={{ backgroundColor: Colors.blue, marginBottom: 5 }}
+            style={{ backgroundColor: Colors.yellow, marginBottom: 5 }}
             icon="arrow-forward-outline"
             onPress={submitHandler}
           >
@@ -258,6 +214,7 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     flex: 1,
     marginHorizontal: 16,
+    marginTop: 15,
   },
   upperContainer: {
     flex: 1,

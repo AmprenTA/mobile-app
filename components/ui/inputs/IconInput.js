@@ -16,6 +16,7 @@ function IconInput({
   onUpdateValue,
   value,
   isInvalid,
+  invalidMessage,
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const [visibleInput, setVisibleInput] = useState(inputType === "password");
@@ -56,6 +57,7 @@ function IconInput({
           </Pressable>
         )}
       </View>
+      {isInvalid && <Text style={styles.invalidMessage}>{invalidMessage}</Text>}
     </>
   );
 }
@@ -98,5 +100,10 @@ const styles = StyleSheet.create({
   },
   inputInvalid: {
     borderColor: Colors.red,
+    marginBottom: 0,
+  },
+  invalidMessage: {
+    margin: 4,
+    color: Colors.red,
   },
 });

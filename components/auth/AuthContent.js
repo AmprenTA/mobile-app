@@ -1,39 +1,48 @@
 import { useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
-
 import AuthForm from "./AuthForm";
-import { Colors } from "../../constants/styles";
 
 function AuthContent({ isLogin, onAuthenticate }) {
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     firstName: false,
     lastName: false,
-    city: false,
     email: false,
     password: false,
     confirmPassword: false,
   });
 
   function submitHandler(credentials) {
-    let { firstName, lastName, city, email, password, confirmPassword } =
-      credentials;
+    let { firstName, lastName, email, password, confirmPassword } = credentials;
 
+    firstName = firstName.trim();
+    lastName = lastName.trim();
     email = email.trim();
     password = password.trim();
 
+    const regName = /[0-9]+/g;
+    const regPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/;
+    const firstNameIsValid = !regName.test(firstName);
+    const lastNameIsValid = !regName.test(lastName);
     const emailIsValid = email.includes("@");
-    const passwordIsValid = password.length > 7;
+    const passwordIsValid = regPassword.test(password);
     const passwordsAreEqual = password === confirmPassword;
 
-    if (!emailIsValid || !passwordIsValid || (!isLogin && !passwordsAreEqual)) {
+    if (
+      !emailIsValid ||
+      !passwordIsValid ||
+      (!isLogin && !passwordsAreEqual) ||
+      (!isLogin && !firstNameIsValid) ||
+      (!isLogin && !lastNameIsValid)
+    ) {
       setCredentialsInvalid({
+        validFirstName: !firstNameIsValid,
+        validLastName: !lastNameIsValid,
         email: !emailIsValid,
         password: !passwordIsValid,
-        confirmPassword: !passwordIsValid || !passwordsAreEqual,
+        confirmPassword: !passwordsAreEqual,
       });
       return;
     }
-    onAuthenticate({ firstName, lastName, city, email, password });
+    onAuthenticate({ firstName, lastName, email, password });
   }
 
   return (

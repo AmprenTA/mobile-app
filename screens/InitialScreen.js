@@ -3,14 +3,9 @@ import { Colors } from "../constants/styles";
 import SvgIcon from "../components/ui/svg/SvgIcon";
 import InitialButtons from "../components/ui/buttons/InitialButtons";
 import Highlight from "../components/ui//Highlight";
-import Button from "../components/ui//buttons/Button";
 import InfoButtons from "../components/ui/buttons/InfoButtons";
 
 function InitialSCreen({ navigation }) {
-  function goToCalculatorHandler() {
-    navigation.navigate("CalculatorScreen");
-  }
-
   return (
     <View style={styles.rootContainer}>
       <View style={styles.upperContainer}>
@@ -22,7 +17,9 @@ function InitialSCreen({ navigation }) {
             Calculează-ți amprenta de carbon și
           </Text>
           <View style={styles.highlightContainer}>
-            <Highlight>acționează</Highlight>
+            <Highlight style={{ backgroundColor: Colors.yellow }}>
+              acționează
+            </Highlight>
             <Text style={[styles.textDescription, { marginLeft: 8 }]}>
               imediat
             </Text>
@@ -31,15 +28,6 @@ function InitialSCreen({ navigation }) {
         <InfoButtons />
       </View>
       <View style={styles.buttonsContainer}>
-        <View style={styles.continueTextContainer}>
-          <Text style={styles.continueText}>Nu vrei să ai un cont?</Text>
-          <Button
-            onPress={goToCalculatorHandler}
-            style={{ backgroundColor: Colors.yellow, padding: 5 }}
-          >
-            Continuă neînregistrat
-          </Button>
-        </View>
         <View style={styles.authButtons}>
           <InitialButtons />
         </View>
@@ -84,8 +72,9 @@ const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans_500Medium",
   },
   authButtons: {
-    flex: 2,
+    flex: 1,
     marginHorizontal: 50,
+    marginVertical: 50,
   },
   continueTextContainer: {
     flex: 1,

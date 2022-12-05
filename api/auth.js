@@ -1,21 +1,22 @@
 import axios from "axios";
+import { BASE_URL } from "@env";
 
-const url =
-  "https://bedb-2a02-2f0e-f715-4b00-1d73-8b25-412f-53eb.eu.ngrok.io/api/v1/";
+export async function createUser(email, password, firstName, lastName) {
+  const response = await axios.post(BASE_URL + "users/sign_up", {
+    email: email,
+    password: password,
+    first_name: firstName,
+    last_name: lastName,
+  });
 
-async function authenticate(mode, email, password) {
-  const response = await axios.post(url + mode, {
+  return response.data;
+}
+
+export async function login(email, password) {
+  const response = await axios.post(BASE_URL + "users/sign_in", {
     email: email,
     password: password,
   });
 
-  console.log(response.data);
-}
-
-export async function createUser(mode, email, password) {
-  await authenticate(mode, email, password);
-}
-
-export async function login(mode, email, password) {
-  await authenticate(mode, email, password);
+  return response.data;
 }
