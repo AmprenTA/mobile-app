@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "amprenta",
-    "slug": "amprenta",
-    "version": "1.0.0",
+    "name": "AmprenTA",
+    "slug": "AmprenTA",
+    "version": "0.9.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,18 +15,28 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
+      "buildNumber": "0.9.0",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 0,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFEF7"
-      }
+      },
+      "package": "com.alex_cr100.AmprenTA"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fb631bf6-c632-4103-8352-326f4b96c16b"
+      }
     }
   }
 }

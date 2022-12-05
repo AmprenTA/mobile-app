@@ -16,7 +16,7 @@ function InfoButtons() {
         </InfoButton>
       </View>
       <InfoButton
-        textColor={{ color: Colors.textSecondary }}
+        textColor={{ color: Colors.textPrimary }}
         color={Colors.yellow}
         style={{ backgroundColor: Colors.yellow }}
         id={1}

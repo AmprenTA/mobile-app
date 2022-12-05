@@ -2,8 +2,8 @@ import { StyleSheet, Text } from "react-native";
 
 import { Colors } from "../../constants/styles";
 
-function Highlight({ children }) {
-  return <Text style={[styles.highlight]}>{children}</Text>;
+function Highlight({ children, style }) {
+  return <Text style={[styles.highlight, style]}>{children}</Text>;
 }
 
 export default Highlight;
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans_500Medium",
     paddingVertical: 4,
     paddingHorizontal: 12,
-    backgroundColor: Colors.yellow,
+    backgroundColor: Colors.blue,
   },
 });

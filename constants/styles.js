@@ -7,9 +7,10 @@ export const Colors = {
   blue: "#ACD3E2",
   green: "#509046",
   yellow: "#FCD351",
-  red: "#F78E91",
+  red: "#FF6165",
   textPrimary: "#222122",
   textSecondary: "#5B5B5B",
+  textDisabled: "#959595",
   error100: "#CC6672",
   error500: "#7A1420",
 };

@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import Svg, { G, Path, Defs } from "react-native-svg";
 
 /* SVGR has dropped some elements not supported by react-native-svg: filter */

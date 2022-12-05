@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 import { Colors } from "../../../constants/styles";
 import IconButton from "./IconButton";
+import Button from "./Button";
 import Separator from "../Separator";
 
 function InitialButtons() {
@@ -25,15 +26,21 @@ function InitialButtons() {
       </IconButton>
       <Separator style={{ backgroundColor: Colors.textPrimary }}>Sau</Separator>
 
-      <IconButton
-        icon="person-add"
-        color={Colors.textPrimary}
-        size={20}
+      <Button
+        // icon="person-add"
+        // color={Colors.textPrimary}
+        // size={20}
+        layout={{ justifyContent: "center" }}
         onPress={registerHandler}
-        style={{ backgroundColor: Colors.blue }}
+        style={{
+          // borderWidth: 2,
+          // borderColor: Colors.yellow,
+
+          backgroundColor: Colors.background,
+        }}
       >
         Înregistrează-te
-      </IconButton>
+      </Button>
     </View>
   );
 }
