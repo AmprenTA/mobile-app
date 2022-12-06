@@ -40,7 +40,7 @@ const CustomDrawer = (props) => {
                 fontFamily: "IBMPlexSans_500Medium",
               }}
             >
-              username
+              {authCtx.userName}
             </Text>
           </TouchableOpacity>
           <View style={{ justifyContent: "center" }}>

@@ -20,7 +20,7 @@ function InitialButtons() {
         color={Colors.textPrimary}
         size={20}
         onPress={loginHandler}
-        style={{ backgroundColor: Colors.blue }}
+        style={{ backgroundColor: Colors.yellow }}
       >
         Conectează-te
       </IconButton>

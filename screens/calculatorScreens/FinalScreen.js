@@ -14,6 +14,7 @@ function FinalScreen({ navigation }) {
   async function handleButtonClick() {
     try {
       const results = await getResults(answersCtx.footprintId, authCtx.token);
+      console.log(results);
       navigation.navigate("resultsScreen", results);
     } catch (err) {
       console.log(err);

@@ -17,7 +17,7 @@ function InitialSCreen({ navigation }) {
             Calculează-ți amprenta de carbon și
           </Text>
           <View style={styles.highlightContainer}>
-            <Highlight style={{ backgroundColor: Colors.yellow }}>
+            <Highlight style={{ backgroundColor: Colors.blue }}>
               acționează
             </Highlight>
             <Text style={[styles.textDescription, { marginLeft: 8 }]}>
