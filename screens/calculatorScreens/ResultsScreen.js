@@ -43,7 +43,7 @@ function ResultsScreen({ navigation, route }) {
 
         <ResultCard
           text="Alimentație"
-          quantity={results["food_carbon_footprint"]}
+          quantity={results["food_carbon_footprint"].average}
           style={{
             color: Colors.textPrimary,
             backgroundColor: Colors.yellow,

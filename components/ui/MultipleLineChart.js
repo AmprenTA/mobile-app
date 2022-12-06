@@ -9,7 +9,7 @@ function MultipleLineChart() {
       <ScrollView horizontal={true}>
         <LineChart
           data={{
-            labels: ["January", "February", "March", "April"],
+            labels: ["01.07.2022", "11.07.2022", "21.07.2022", "31.07.2022"],
             datasets: [
               {
                 data: [

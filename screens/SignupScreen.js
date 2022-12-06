@@ -17,7 +17,12 @@ function LoginScreen() {
 
     try {
       const token = await createUser(email, password, firstName, lastName);
-      authCtx.authenticate(token["auth_token"]);
+      authCtx.authenticate(
+        token["auth_token"],
+        `${
+          token["first_name"][0].toUpperCase() + token["first_name"].slice(1)
+        } ${token["last_name"][0].toUpperCase() + token["last_name"].slice(1)}`
+      );
     } catch (err) {
       Alert.alert(
         "Crearea contului nu a funcționat!",

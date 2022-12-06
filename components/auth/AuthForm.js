@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     flex: 1,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
     marginTop: 15,
   },
   upperContainer: {
@@ -273,8 +273,9 @@ const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans_500Medium",
   },
   header: {
+    fontSize: 16,
     marginBottom: 16,
-    fontFamily: "IBMPlexSans_400Regular",
+    fontFamily: "IBMPlexSans_500Medium",
     color: Colors.textSecondary,
   },
   otherAuthContainer: {

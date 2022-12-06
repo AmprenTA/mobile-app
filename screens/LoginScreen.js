@@ -14,7 +14,13 @@ function LoginScreen() {
     setIsAuthenticating(true);
     try {
       const token = await login(email, password);
-      authCtx.authenticate(token["auth_token"]);
+      console.log(token);
+      authCtx.authenticate(
+        token["auth_token"],
+        `${
+          token["first_name"][0].toUpperCase() + token["first_name"].slice(1)
+        } ${token["last_name"][0].toUpperCase() + token["last_name"].slice(1)}`
+      );
     } catch (error) {
       console.log(error.response);
       Alert.alert(

@@ -49,12 +49,14 @@ function StatisticsScreen() {
           </Text>
         </View>
         <View style={styles.dropdown}>
-          <Dropdown
-            data={data}
-            placeholder="Alege orașul"
-            saveKeyOrValue="value"
-            changeCity={changeCity}
-          />
+          <View>
+            <Dropdown
+              data={data}
+              placeholder="Alege orașul"
+              saveKeyOrValue="value"
+              changeCity={changeCity}
+            />
+          </View>
         </View>
         <MultipleLineChart />
         <QuantityCards
@@ -112,18 +114,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerText: {
-    marginLeft: "10%",
+    // marginLeft: "10%",
+    marginHorizontal: 10,
     fontSize: 24,
     fontFamily: "IBMPlexSans_500Medium",
   },
   chartDescription: {
-    marginLeft: "10%",
+    // marginLeft: "10%",
+    marginHorizontal: 10,
     marginTop: 12,
     color: Colors.textPrimary,
     fontFamily: "IBMPlexSans_500Medium",
   },
   dropdown: {
-    marginLeft: "10%",
+    marginLeft: "20%",
+    justifyContent: "center",
+
     marginTop: 12,
     paddingRight: 80,
   },

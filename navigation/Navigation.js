@@ -1,7 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { View, Text } from "react-native";
 import { Colors } from "../constants/styles";
 import { useContext } from "react";
 import { AuthContext } from "../store/auth-context";
@@ -15,7 +14,6 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "../screens/HomeScreen";
 import DonationsScreen from "../screens/DonationScreen";
 import StatisticsScreen from "../screens/StatisticsScreen";
-import AboutUsScreen from "../screens/AboutUsScreen";
 import CustomDrawer from "../components/CustomDrawer";
 
 const Stack = createNativeStackNavigator();
@@ -95,19 +93,6 @@ function DrawerNavigator() {
         }}
         name="Donații"
         component={DonationsScreen}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: ({ color, focused, size }) => (
-            <Ionicons
-              name={focused ? "people" : "people-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-        name="Despre noi"
-        component={AboutUsScreen}
       />
     </Drawer.Navigator>
   );
