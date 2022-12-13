@@ -1,10 +1,23 @@
 import { Text, View, StyleSheet } from "react-native";
+import { useContext } from "react";
 import IconButton from "../../components/ui/buttons/IconButton";
 import { Colors } from "../../constants/styles";
-
+import { AuthContext } from "../../store/auth-context";
+import { getUserAvailability } from "../../api/calculator";
 function BeginCalculationScreen({ navigation }) {
-  function buttonHandler() {
-    navigation.navigate("firstSection");
+  const authCtx = useContext(AuthContext);
+
+  async function buttonHandler() {
+    try {
+      const availability = await getUserAvailability(authCtx.token);
+      if (availability) {
+        navigation.navigate("countyScreen");
+      } else {
+        navigation.navigate("nextMonth");
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (

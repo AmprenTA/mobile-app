@@ -53,6 +53,7 @@ function ResultsScreen({ navigation, route }) {
         <ResultCard
           text="Gospodărie"
           quantity={results["house_carbon_footprint"]}
+          // quantity={261}
           style={{ color: "white", backgroundColor: Colors.green }}
         />
       </View>

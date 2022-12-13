@@ -36,6 +36,7 @@ function AnswerInterval({ questionId, saveAnswer, nextLocation }) {
     if (nextLocation === "finalScreen") {
       const body = answersCtx.createFoodAnswer();
       body["footprint_id"] = answersCtx.footprintId;
+      console.log(body);
       try {
         const createdFoods = await createFoods(body, authCtx.token);
       } catch (err) {

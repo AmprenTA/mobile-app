@@ -34,6 +34,8 @@ import VeggieScreen from "./calculatorScreens/thirdSectionScreens/VeggieScreen";
 import SheepScreen from "./calculatorScreens/thirdSectionScreens/SheepScreen";
 import FinalScreen from "./calculatorScreens/FinalScreen";
 import ResultsScreen from "./calculatorScreens/ResultsScreen";
+import NextMonthScreen from "./calculatorScreens/NextMonthScreen";
+import CountyScreen from "./calculatorScreens/CountyScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +54,8 @@ function CalculatorScreen() {
         name="beginCalculationScreen"
         component={BeginCalculationScreen}
       />
+      <Stack.Screen name="nextMonth" component={NextMonthScreen} />
+      <Stack.Screen name="countyScreen" component={CountyScreen} />
       <Stack.Screen name="firstSection" component={FirstSection} />
       <Stack.Screen name="ownCarScreen" component={OwnCarScreen} />
       <Stack.Screen name="fuelTypeScreen" component={FuelTypeScreen} />

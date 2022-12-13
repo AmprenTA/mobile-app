@@ -2,11 +2,13 @@ import { createContext, useState } from "react";
 
 export const AnswersContext = createContext({
   answers: [],
+  location: null,
   footprintId: null,
   addAnswer: (answer) => {},
   updateAnswer: (answer) => {},
   resetAnswers: () => {},
   addFootprintID: (id) => {},
+  changeLocation: (location) => {},
   createTravelAnswer: () => {},
   createFoodAnswer: () => {},
 });
@@ -14,6 +16,7 @@ export const AnswersContext = createContext({
 function AnswersContextProvider({ children }) {
   const [answers, setAnswers] = useState([]);
   const [footprintId, setFootprintID] = useState(null);
+  const [location, setLocation] = useState(null);
 
   function resetAnswers() {
     setAnswers(() => []);
@@ -113,6 +116,7 @@ function AnswersContextProvider({ children }) {
       cars: cars,
       flights: flights,
       public_transports: transports,
+      location: location,
     };
   }
 
@@ -133,6 +137,10 @@ function AnswersContextProvider({ children }) {
     };
   }
 
+  function changeLocation(location) {
+    setLocation(location);
+  }
+
   const value = {
     answers: answers,
     footprintId: footprintId,
@@ -140,6 +148,7 @@ function AnswersContextProvider({ children }) {
     resetAnswers: resetAnswers,
     addAnswer: addAnswer,
     updateAnswer: updateAnswer,
+    changeLocation: changeLocation,
     createTravelAnswer: createTravelAnswer,
     createFoodAnswer: createFoodAnswer,
   };
