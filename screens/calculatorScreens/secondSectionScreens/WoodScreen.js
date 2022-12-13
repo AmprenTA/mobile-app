@@ -40,7 +40,7 @@ function WoodScreen({ navigation, route }) {
     };
     try {
       const createdHousehold = await createHousehold(httpBody, authCtx.token);
-      
+      console.log(createdHousehold);
     } catch (err) {
       console.log(err);
     }

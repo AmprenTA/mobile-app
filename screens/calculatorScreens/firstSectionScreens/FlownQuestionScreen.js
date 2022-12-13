@@ -38,9 +38,10 @@ function FlownQuestionScreen({ navigation, route }) {
   async function goForward() {
     if (nextLocation === "secondSection") {
       const body = answersCtx.createTravelAnswer();
+      console.log(body);
       try {
         const createdTransports = await createTranports(body, authCtx.token);
-        
+
         answersCtx.addFootprintID(createdTransports["footprint_id"]);
       } catch (err) {
         console.log(err);
